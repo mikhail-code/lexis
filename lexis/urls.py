@@ -17,10 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.views.generic import TemplateView
+# need to link with react
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls'))
 
+    path('api/', include('api.urls')),
 #     means let api.urls take control of routing when path starts with ''
 
+    path('', TemplateView.as_view(template_name='index.html')),
+#     we pointing to file in react project
 ]
